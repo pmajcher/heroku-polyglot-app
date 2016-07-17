@@ -13,7 +13,7 @@
         <spring.version>4.3.1.RELEASE</spring.version>
         <jstl.version>1.2</jstl.version>
         <servletapi.version>3.1.0</servletapi.version>
-        <jetty-maven-plugin.version>9.4.0.M0</jetty-maven-plugin.version>
+        <eclipse.jetty.version>9.4.0.M0</eclipse.jetty.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>2.4</maven-dependency-plugin.version>
         <webapp-runner.version>8.0.33.1</webapp-runner.version>
@@ -47,13 +47,46 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty-maven-plugin.version}</version>
+                <version>${eclipse.jetty.version}</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webApp>
                         <contextPath>/polyglot-app</contextPath>
                     </webApp>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-webapp-runner</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.eclipse.jetty</groupId>
+                                    <artifactId>jetty-runner</artifactId>
+                                    <version>${eclipse.jetty.version}</version>
+                                    <destFileName>jetty-runner.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
