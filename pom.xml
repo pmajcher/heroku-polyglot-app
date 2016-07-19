@@ -17,6 +17,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>2.4</maven-dependency-plugin.version>
         <webapp-runner.version>8.0.33.1</webapp-runner.version>
+        <mongo-java-driver.version>2.13.3</mongo-java-driver.version>
     </properties>
 
     <dependencies>
@@ -29,6 +30,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${mongo-java-driver.version}</version>
         </dependency>
     </dependencies>
     <build>

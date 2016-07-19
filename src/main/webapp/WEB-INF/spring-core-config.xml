@@ -9,4 +9,12 @@
 
     <context:component-scan base-package="com.example.service" />
 
+    <bean class="com.mongodb.MongoClientURI" id="mongoURI">
+        <constructor-arg value="#{systemEnvironment['MONGODB_URI']}"/>
+    </bean>
+
+    <bean class="com.mongodb.MongoClient" id="mongo">
+        <constructor-arg ref="mongoURI" />
+    </bean>
+
 </beans>
