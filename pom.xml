@@ -18,6 +18,7 @@
         <maven-dependency-plugin.version>2.4</maven-dependency-plugin.version>
         <webapp-runner.version>8.0.33.1</webapp-runner.version>
         <mongo-java-driver.version>2.13.3</mongo-java-driver.version>
+        <httpclient.version>4.5.2</httpclient.version>
     </properties>
 
     <dependencies>
@@ -35,6 +36,11 @@
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>${mongo-java-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
         </dependency>
     </dependencies>
     <build>
